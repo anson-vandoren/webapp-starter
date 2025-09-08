@@ -1,0 +1,45 @@
+[tools]
+"cargo:bacon" = "latest"
+"cargo:cargo-sort" = "latest"
+"cargo:cargo-sort-derives" = "latest"
+"aqua:nextest-rs/nextest/cargo-nextest" = "latest"
+"cargo:sqlx-cli" = "latest"
+node = "latest"
+rust = { version = "1.89.0", components = "clippy,rust-analyzer" }
+sqlite = "latest"
+"cargo:cargo-udeps" = "latest"
+"cargo:cargo-edit" = "latest"
+
+[tasks.build]
+description = "Build backend"
+run = "cargo build"
+
+[tasks.run]
+description = "Build and then run"
+depends = ["build"]
+run = "cargo run"
+
+[tasks.watch]
+description = "Run the server and restart on changes"
+depends = ["migrate"]
+run = "bacon server"
+
+[tasks.test]
+description = "Run backend/Rust tests"
+run = "RUST_LOG=debug cargo nextest run"
+
+[tasks.testall]
+description = "Run all tests without failing early"
+run = "RUST_LOG=debug cargo nextest run --no-fail-fast"
+
+[tasks.clippy]
+description = "Run clippy for all targets (including cfg(test))"
+run = "cargo clippy --all-targets"
+
+[tasks.migrate]
+description = "Run database migrations"
+run = [
+  "cargo sqlx database create",
+  "cargo sqlx migrate run",
+  "cargo sqlx prepare",
+]

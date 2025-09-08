@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            select user_id as \"user_id: Uuid\", username, password_hash, is_revoked\n            from users where username = $1\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id: Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      },
+      {
+        "name": "username",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "password_hash",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "is_revoked",
+        "ordinal": 3,
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "b3ba7ef39aeba2502335052256d20c909f2096c508eae4a06554566b9e2bc192"
+}

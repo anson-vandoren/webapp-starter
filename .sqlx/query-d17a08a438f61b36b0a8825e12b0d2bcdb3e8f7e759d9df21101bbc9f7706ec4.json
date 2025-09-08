@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            insert into user_sessions (\n                user_id,\n                expires_at\n            )\n            values (?, ?)\n            returning token_id as \"token_id: Uuid\"\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "token_id: Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "d17a08a438f61b36b0a8825e12b0d2bcdb3e8f7e759d9df21101bbc9f7706ec4"
+}

@@ -1,0 +1,12 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "maxLineLength": 110,
+  "plugins": ["prettier-plugin-jinja-template"],
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": { "parser": "jinja-template" }
+    }
+  ]
+}

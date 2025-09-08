@@ -1,0 +1,44 @@
+<nav>
+  <ul>
+    <li>
+      <a hx-swap="transition:true" href="/" class="brand">
+        <img
+          src="/assets/img/favicon.svg"
+          alt="Product Logo"
+          height="64"
+          width="64"
+        />
+        <strong>MyApp</strong>
+      </a>
+    </li>
+
+    {% match auth_state %}
+      {% when AuthState::Authenticated %}
+      <li>Hello {{ username }}</li>
+      <li>
+        <a
+          hx-swap="transition:true"
+          hx-post="/logout"
+          hx-target="body"
+          class="loginlogout"
+        >
+          <img
+            src="/assets/img/logout_icon.svg"
+            alt="Logout Icon"
+            class="icon"
+          />
+          Log Out
+        </a>
+      </li>
+      {% when AuthState::Anonymous %}
+      <li>
+        <a hx-swap="transition:true" href="/login" class="loginlogout">
+          <img src="/assets/img/login_icon.svg" alt="Login Icon" class="icon" />
+          Log In
+        </a>
+      </li>
+      {% when AuthState::LoginPage %}
+      {# No login/logout button on the login page itself #}
+    {% endmatch %}
+  </ul>
+</nav>

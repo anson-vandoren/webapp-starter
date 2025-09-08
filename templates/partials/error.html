@@ -1,0 +1,19 @@
+<div class="error-alert error-{{ status_code }}">
+  {% if status_code == 401 %}
+    <p class="error-message">{{ message }}</p>
+  {% else %}
+    <hr />
+    <h1>{{ status_code }} - {{ title }}</h1>
+    <p>{{ message }}</p>
+
+    <div id="error-actions">
+      <button hx-get="/">Return Home</button>
+      {% if status_code == 401 %}
+        <button hx-get="/login">Log In</button>
+      {% endif %}
+      <button onclick="this.closest('#error-container').innerHTML = ''">
+        Clear
+      </button>
+    </div>
+  {% endif %}
+</div>

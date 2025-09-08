@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            update user_sessions\n            set messages = ?\n            where token_id = ?\n        ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "b6cfd07b9cad906fe26b56cacac5e66819ccca355a514558fe390e2c13ac4f68"
+}

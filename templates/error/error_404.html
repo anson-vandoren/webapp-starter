@@ -1,0 +1,20 @@
+{% extends "layout/base.html" %}
+{% block content %}
+  <section class="error-page">
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Not Found</h1>
+      <p class="error-description">
+        The requested resource was not found on this server.
+      </p>
+      {% if !reason.is_empty() %}
+        <div class="error-reason"><strong>Details:</strong> {{ reason }}</div>
+      {% endif %}
+      <div class="error-actions">
+        <a href="{{ link }}" class="button" hx-swap="transition:true">
+          {% if link == "/" %}Back to Home{% else %}Go to Dashboard{% endif %}
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

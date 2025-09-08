@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            select\n                user_id as \"user_id: Uuid\",\n                messages\n            from user_sessions\n            where token_id = ?\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id: Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      },
+      {
+        "name": "messages",
+        "ordinal": 1,
+        "type_info": "Blob"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      true
+    ]
+  },
+  "hash": "de19fe44d12b7166f6557d9314b080dec8f92143ced96016582d251674f0b640"
+}

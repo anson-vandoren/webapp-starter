@@ -1,0 +1,36 @@
+{% if toasts.len() > 0 %}
+  <div class="toasts" aria-live="polite" aria-atomic="true">
+    {% for toast in toasts %}
+      <div
+        class="toast toast-{% if toast.is_success %}success{% else %}error{% endif %}"
+        role="alert"
+      >
+        <img
+          class="icon"
+          src="/assets/img/{% if toast.is_success %}check_mark.svg{% else %}error_mark.svg{% endif %}"
+          alt="{% if toast.is_success %}Success{% else %}Error{% endif %} icon"
+        />
+        <span class="toast-message">{{ toast.message }}</span>
+        <button
+          class="toast-close"
+          aria-label="Close notification"
+          onclick="let t=this.closest('.toast'); t.classList.add('removing'); setTimeout(()=>t.remove(),300)"
+        >
+          x
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+  <script>
+    // Auto-dismiss toasts after 15 seconds
+    document.querySelectorAll(".toast").forEach((toast) => {
+      setTimeout(() => {
+        if (toast.parentNode) {
+          // Check if toast still exists
+          toast.classList.add("removing");
+          setTimeout(() => toast.remove(), 300);
+        }
+      }, 15000);
+    });
+  </script>
+{% endif %}

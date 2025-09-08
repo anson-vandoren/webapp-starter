@@ -1,0 +1,20 @@
+{% extends "layout/base.html" %}
+{% block content %}
+  <section class="error-page">
+    <div class="error-container">
+      <div class="error-code">401</div>
+      <h1 class="error-title">Unauthorized Access</h1>
+      <p class="error-description">
+        You must be logged in to access this page.
+      </p>
+      {% if !reason.is_empty() %}
+        <div class="error-reason"><strong>Details:</strong> {{ reason }}</div>
+      {% endif %}
+      <div class="error-actions">
+        <a href="/login" class="button" hx-swap="transition:true">
+          Log In to Continue
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

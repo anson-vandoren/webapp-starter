@@ -1,0 +1,37 @@
+{% extends "layout/base.html" %}
+{% block content %}
+  <article class="card">
+    <header class="card-header">
+      <h1>Log In</h1>
+    </header>
+    <!-- Submit w/ POST to the /login endpoint, on success replace <body> inner HTML with the response -->
+    <form
+      hx-post="/login"
+      hx-target="body"
+      hx-swap="transition:true"
+      hx-push-url="true"
+      hx-on::after-request="if(event.detail.successful) { document.getElementById('password').value = ''; }"
+    >
+      <label for="username">Username:</label>
+      <input id="username" type="text" name="username" required autofocus />
+
+      <label for="password"> Password:</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        minlength="8"
+        required
+      />
+      <!-- Inline error message for any password errors not caught by HTML5 validation -->
+      <div id="error-password" class="error-message"></div>
+
+      <footer>
+        <button type="submit">Sign In</button>
+      </footer>
+    </form>
+
+    <!-- Container for full-form errors that don't relate to just a single field -->
+    <div id="error-container"></div>
+  </article>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <section>
+    {% match auth_state %}
+      {% when AuthState::Anonymous %}
+      <hr />
+      <p>Please log in to access your account.</p>
+      <footer>
+        <a hx-swap="transition:true" href="/login">Log In</a>
+      </footer>
+      {% when AuthState::LoginPage %}
+      <hr />
+      <p>Please log in to access your account.</p>
+      <footer>
+        <a hx-swap="transition:true" href="/login">Log In</a>
+      </footer>
+      {% when AuthState::Authenticated %}
+      <div class="content">
+        <!-- TODO: logged-in content goes here, probably with hx-get="/the_path" hx-trigger="load" -->
+      </div>
+    {% endmatch %}
+  </section>
+{% endblock content %}
