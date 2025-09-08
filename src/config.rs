@@ -10,13 +10,10 @@ use std::{
     path::Path,
 };
 
-use crate::APP_PREFIX;
 use anyhow::{Context, Result};
 use base64::{Engine, prelude::BASE64_STANDARD};
-use const_format::formatcp;
 
 use crate::encryption::generate_root_key;
-
 /// Application configuration loaded from environment variables.
 #[derive(Clone, Debug)]
 pub struct Config {
@@ -26,8 +23,8 @@ pub struct Config {
     pub root_key: Vec<u8>,
 }
 
-// TODO: if you inline app name here, you can drop `const_format` crate
-const ROOT_KEY_NAME: &str = formatcp!("{APP_PREFIX}_KEY_BASE_64");
+// TODO: change `MY_APP_` below
+const ROOT_KEY_NAME: &str = "MY_APP_KEY_BASE_64";
 
 impl Config {
     /// Initializes the configuration from environment variables.

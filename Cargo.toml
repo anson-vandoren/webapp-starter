@@ -12,7 +12,6 @@ axum = "0.8.4"
 axum-extra = { version = "0.10.1", features = ["cookie"] }
 base64 = "0.22.1"
 chrono = { version = "0.4.41", features = ["serde"] }
-const_format = { version = "0.2.34" }
 cookie = "0.18.1"
 dotenvy = "0.15.7"
 futures = "0.3.31"

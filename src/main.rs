@@ -1,9 +1,11 @@
-use crate::{config::Config, encryption::EncryptionProvider};
+use std::sync::Arc;
+
 use anyhow::Result;
 use axum::extract::State;
 use dotenvy::dotenv;
 use sqlx::SqlitePool;
-use std::sync::Arc;
+
+use crate::{config::Config, encryption::EncryptionProvider};
 
 mod config;
 mod db;
@@ -23,9 +25,6 @@ pub struct AppState {
 
 /// Type alias for extracting the application state in request handlers.
 pub type ApiState = State<Arc<AppState>>;
-
-// TODO: update this for your app
-const APP_PREFIX: &str = "MYAPP";
 
 /// Main entry point for the application.
 ///

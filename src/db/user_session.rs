@@ -54,6 +54,7 @@ impl Session {
             .inspect_err(|e| error!(error = ?e, "Failed to save session after retrieving messages."));
         messages
     }
+
     /// Adds a message to the session, persisting to the database.
     pub async fn add_message(&mut self, pool: &SqlitePool, message: Toast) {
         self.messages.push(message);
