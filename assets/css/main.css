@@ -521,8 +521,7 @@ header nav {
   }
 }
 
-/* Game content container */
-.game-content {
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
